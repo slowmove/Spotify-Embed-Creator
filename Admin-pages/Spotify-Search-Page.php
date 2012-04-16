@@ -13,27 +13,27 @@ if (is_user_logged_in ()):
     <table class="wp-list-table widefat users" cellspacing="0">
       <thead>
         <tr>
-          <th scope="col" id="role" class="manage-column column-role" style="display:none;">Sök Artist</th>
-          <th scope="col" id="role" class="manage-column column-role" style="">Sök Album</th>
-          <th scope="col" id="role" class="manage-column column-role" style="">Sök Låt</th>
+          <th scope="col" id="role" class="manage-column column-role" style="display:none;">Search Artist</th>
+          <th scope="col" id="role" class="manage-column column-role" style="">Search Album</th>
+          <th scope="col" id="role" class="manage-column column-role" style="">Search Track</th>
           
-          <th scope="col" id="role" class="manage-column column-role" style="">Bredd</th>
-          <th scope="col" id="role" class="manage-column column-role" style="">Höjd</th>          
+          <th scope="col" id="role" class="manage-column column-role" style="">Width</th>
+          <th scope="col" id="role" class="manage-column column-role" style="">Height</th>          
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="col" id="role" class="manage-column column-role" style="display:none;">
           	<input type="text" id="artist-search" />
-          	<input type="button" id="artist-do-search" value="Sök" />
+          	<input type="button" id="artist-do-search" value="Search" />
           </th>
           <th scope="col" id="role" class="manage-column column-role" style="">
           	<input type="text" id="album-search" />          
-          	<input type="button" id="album-do-search" value="Sök" />          	
+          	<input type="button" id="album-do-search" value="Search" />          	
           </th>
           <th scope="col" id="role" class="manage-column column-role" style="">
           	<input type="text" id="song-search" />          
-          	<input type="button" id="song-do-search" value="Sök" />          	
+          	<input type="button" id="song-do-search" value="Search" />          	
           </th>
           
           <th scope="col" id="role" class="manage-column column-role" style="">
@@ -52,9 +52,9 @@ if (is_user_logged_in ()):
   </div>
   <div style="float:left; width: 47%;">
 	  <div id="codeboxes" style="display:none;">
-		  <h3>iFrame-kod</h3>
+		  <h3>iFrame code</h3>
 		  <textarea id="iframe-code" cols="100" rows="4"></textarea>
-		  <h3>Shortcode-kod</h3>
+		  <h3>Shortcode</h3>
 		  <textarea id="shortcode-code" cols="100" rows="4"></textarea>  
   	  </div>  
 	  <div id="spotify-preview-container" style="float:left;"></div>  
@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
 });  
 function search_spotify(type, query)
 {
-	jQuery("#spotify-result-container").html("Söker…");
+	jQuery("#spotify-result-container").html("Searching...");
 	jQuery("#spotify-preview-container").hide();
 	jQuery("#codeboxes").hide();
             jQuery.ajax({
