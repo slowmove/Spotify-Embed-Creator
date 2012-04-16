@@ -115,7 +115,7 @@ add_action('plugins_loaded', 'SpotifyEmbedCreator::update');
 add_action('admin_menu', 'SpotifyEmbedCreator_add_page');
 
 function SpotifyEmbedCreator_add_page() {
-	add_menu_page('Skapa Spotifybox', 'Skapa Spotifybox', 'manage_options', __FILE__, 'SpotifyEmbedCreatorSearchPage');
+	add_menu_page('Create Spotify Play Button', 'Create Spotify Play Button', 'manage_options', __FILE__, 'SpotifyEmbedCreatorSearchPage');
 }
 
 function SpotifyEmbedCreatorSearchPage() {
