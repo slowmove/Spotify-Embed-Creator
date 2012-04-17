@@ -11,7 +11,7 @@
         <tr>
           <th scope="col" id="role" class="manage-column column-role" style="display:none;">Search Artist</th>
           <th scope="col" id="role" class="manage-column column-role" style="">Search Album</th>
-          <th scope="col" id="role" class="manage-column column-role" style="">Search Låt</th>
+          <th scope="col" id="role" class="manage-column column-role" style="">Search Track</th>
           
           <th scope="col" id="role" class="manage-column column-role" style="">Width</th>
           <th scope="col" id="role" class="manage-column column-role" style="">Height</th>          
@@ -20,28 +20,29 @@
       <tbody>
         <tr>
           <th scope="col" id="role" class="manage-column column-role" style="display:none;">
-          	<input type="text" id="artist-search" />
-          	<input type="button" id="artist-do-search" value="Search" />
+            <input type="text" id="artist-search" />
+            <input type="button" id="artist-do-search" value="Search" />
           </th>
           <th scope="col" id="role" class="manage-column column-role" style="">
-          	<input type="text" id="album-search" />          
-          	<input type="button" id="album-do-search" value="Search" />          	
+            <input type="text" id="album-search" />          
+            <input type="button" id="album-do-search" value="Search" />           
           </th>
           <th scope="col" id="role" class="manage-column column-role" style="">
-          	<input type="text" id="song-search" />          
-          	<input type="button" id="song-do-search" value="Search" />          	
+            <input type="text" id="song-search" />          
+            <input type="button" id="song-do-search" value="Search" />            
           </th>
           
           <th scope="col" id="role" class="manage-column column-role" style="">
-          	<input type="text" id="iframe-width" value="300" />             
-		  </td>
+            <input type="text" id="iframe-width" value="300" />             
+          </th>
           <th scope="col" id="role" class="manage-column column-role" style="">
-<!--           	<input type="text" id="iframe-height" value="380" />              -->
-				<label>Compact</label>
-				<input type="checkbox"id="compact" />
-		  </td>          
+            <!-- <input type="text" id="iframe-height" value="380" /> -->
+            <label>Compact</label>
+            <input type="checkbox"id="compact" />
+          </th>        
+        </tr>  
       </tbody>
-      </table>
+    </table>
   </div>
 
   <div id="spotify-result-container" style="float:left;width:50%;padding-right:20px;">
