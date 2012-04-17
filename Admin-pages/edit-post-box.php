@@ -114,7 +114,7 @@ function search_spotify(type, query)
                 		for(var i = 0; i < data.albums.length; ++i)
                 		{
                 			//html += '<li>'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.albums[i].href+'\');" value="Skapa iframe"/></li>';
-                			html += '<li><a href="#" onClick="get_iframe_code(\''+data.albums[i].href+'\');">'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +'</a></li>';
+                			html += '<li><a href="#" onClick="get_iframe_code(\''+data.albums[i].href+'\');return false;">'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +'</a></li>';
                 		}                	
                 	}
                 	if(type == "track")
@@ -122,7 +122,7 @@ function search_spotify(type, query)
                 		for(var i = 0; i < data.tracks.length; ++i)
                 		{
                 			//html += '<li>'+ data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +' - <input type="button" onclick="get_iframe_code(\''+data.tracks[i].href+'\');" value="Skapa iframe"/></li>';
-                			html += '<li><a href="#" onclick="get_iframe_code(\''+data.tracks[i].href+'\');">' + data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +'</a></li>';
+                			html += '<li><a href="#" onclick="get_iframe_code(\''+data.tracks[i].href+'\'); return false;">' + data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +'</a></li>';
                 		}                	
                 	}
                 	html += '</ul>';
@@ -138,7 +138,7 @@ function search_spotify(type, query)
 function get_iframe_code(href)
 {
 	var iframewidth = jQuery("#iframe-width").val();
-//	var iframeheight = jQuery("#iframe-height").val();	
+  //	var iframeheight = jQuery("#iframe-height").val();	
 	var compact = jQuery("#compact").is(":checked") == true ? "80" : parseInt(iframewidth)+80;
 	var iframehtml = '<iframe src="https://embed.spotify.com/?uri='+href+'" width="'+ iframewidth +'" height="'+ compact +'" frameborder="0" allowtransparency="true"></iframe>';
 	var sizetype = compact == "80" ? "compact" : "width";
@@ -149,6 +149,6 @@ function get_iframe_code(href)
 	//jQuery("#spotify-preview-container").html(iframehtml);
 	//jQuery("#spotify-preview-container").show();
 	//location.href = "#spotify-container";
-    tinyMCE.editors[0].setContent( tinyMCE.editors[0].getContent() + shortcodehtml );
+	tinyMCE.editors[0].setContent( tinyMCE.editors[0].getContent() + shortcodehtml );
 }
   </script>
