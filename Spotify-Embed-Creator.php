@@ -46,7 +46,7 @@ class SpotifyEmbedCreator
 
 }
 /* Shortcode setup */
-function spotifyplaybutton_func( $atts ) {
+function spotifyplaybutton_shortcode_func( $atts ) {
 	extract( shortcode_atts( array(
 		'play' => 'spotify:album:7JggdVIipgSShK1uk7N1hP',
 		'view' => get_option('spotifyplaybutton_view',''),
@@ -72,7 +72,7 @@ function spotifyplaybutton_func( $atts ) {
 
 	return "<iframe src=\"https://embed.spotify.com/?uri={$play}&view={$view}&theme={$theme}\" style=\"width:{$width}px; height:{$height}px;\" frameborder=\"0\" allowTransparency=\"true\"></iframe>";
 }
-add_shortcode( 'spotify', 'spotifyplaybutton_func' );
+add_shortcode( 'spotify', 'spotifyplaybutton_shortcode_func' );
 
 /**
  * Define the custom box
