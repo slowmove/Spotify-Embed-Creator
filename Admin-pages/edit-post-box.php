@@ -146,8 +146,8 @@ function get_iframe_code(href)
 	//jQuery("#iframe-code").val(iframehtml);
 	//jQuery("#shortcode-code").val(shortcodehtml);
 	//jQuery("#codeboxes").show();
-	//jQuery("#spotify-preview-container").html(iframehtml);
-	//jQuery("#spotify-preview-container").show();
+	jQuery("#spotify-preview-container").html(iframehtml);
+	jQuery("#spotify-preview-container").show();
 	//location.href = "#spotify-container";
 	tinyMCE.editors[0].setContent( tinyMCE.editors[0].getContent() + shortcodehtml );
 }
