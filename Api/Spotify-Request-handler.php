@@ -1,6 +1,6 @@
 <?php
 
-	require_once(__DIR__ . '/../../../../wp-config.php');		
+	require_once(dirname( __FILE__ ) . '/../../../../wp-config.php');		
 
     if ( is_user_logged_in() ) 
     {
@@ -30,6 +30,7 @@
                 $response = json_decode($res);
             }
             // write it as json
+			//header('HTTP/1.1 404 Page Not Found');
             header('Cache-Control: no-cache, must-revalidate');
             header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
             header('Content-type: application/json');              

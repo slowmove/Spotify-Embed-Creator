@@ -1,7 +1,7 @@
 <?php
 if (is_user_logged_in ()):
   // get the plugin base url
-  $pluginRoot = plugins_url('', __DIR__);
+  $pluginRoot = plugins_url('', dirname( __FILE__ ));
   $sec = new SpotifyEmbedCreator();
   wp_enqueue_script('SpotifyEmbedCreator');
 ?>
@@ -67,27 +67,27 @@ if (is_user_logged_in ()):
       jQuery('#artist-do-search').bind('click', function(event) {
       	var query = jQuery('#artist-search').val();
       	console.log("Ska söka artist: " + query);
-      	search_spotify("artist", query);
+      	search_spotify("artist", query, "");
       });
       jQuery('#album-do-search').bind('click', function(event) {
       	var query = jQuery('#album-search').val();
       	console.log("Ska söka album: " + query);
-      	search_spotify("album", query);
+      	search_spotify("album", query, "");
       });
       jQuery('#song-do-search').bind('click', function(event) {
       	var query = jQuery('#song-search').val();
       	console.log("Ska söka låt: " + query);
-      	search_spotify("track", query);
+      	search_spotify("track", query, "");
       });    
     });  
-    function search_spotify(type, query)
+    function search_spotify(type, query, path)
     {
     	jQuery("#spotify-result-container").html("Searching...");
     	jQuery("#spotify-preview-container").hide();
     	jQuery("#codeboxes").hide();
                 jQuery.ajax({
                     type: "POST",
-                    url: "<?php echo $pluginRoot ?>/Api/Spotify-Request-handler.php",
+                    url: "<?php echo $pluginRoot ?>" + path + "/Api/Spotify-Request-handler.php",
                     async: true,
                     timeout: 50000,
                     data: { searchtype: type, searchquery: query },
@@ -121,8 +121,15 @@ if (is_user_logged_in ()):
                         jQuery("#spotify-result-container").html(html);
                     },
                     error: function(data) {
-      		            console.log("misslyckades");
-                        alert("Something went wrong");
+					  if(data.status == 404)
+					  {
+						alert("Something went wrong with the url (seems to happend on Binero)");
+					  }
+					  else
+					  {
+						console.log("misslyckades");
+						alert("Something went wrong");
+					  }
                     }
                 });	 	
     }
