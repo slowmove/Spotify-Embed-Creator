@@ -2,9 +2,9 @@
 
 /**
   Plugin Name: Spotify Embed Creator
-  Plugin URI: http://www.slowmove.se/
+  Plugin URI: http://slowmove.se/wordpress-plugin-spotify-embed-creator/
   Description: Search for Album or Song on Spotify and create a Spotify Play Button
-  Version: 1.0.1
+  Version: 1.0.3
   Author: Erik Johansson
   Author URI: http://slowmove.se
   License: GPL2
