@@ -122,7 +122,7 @@ if (is_user_logged_in ()):
                     },
                     error: function(data) {
       		            console.log("misslyckades");
-                        alert("Gick dåligt");
+                        alert("Something went wrong");
                     }
                 });	 	
     }

@@ -130,7 +130,7 @@ function search_spotify(type, query)
                 },
                 error: function(data) {
   		            console.log("misslyckades");
-                    alert("Gick dåligt");
+                    alert("Something went wrong");
                 }
             });	 	
 }
