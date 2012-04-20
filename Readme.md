@@ -7,7 +7,7 @@ Search for Album or Song on Spotify and create a Spotify Play Button
 
   Description: Search for Album or Song on Spotify and create a Spotify Play Button
 
-  Version: 1.0
+  Version: 1.0.4
 
   Author: Erik Johansson
 
