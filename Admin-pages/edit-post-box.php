@@ -95,7 +95,7 @@ function search_spotify(type, query)
 	jQuery("#codeboxes").hide();
                 jQuery.ajax({
                     type: "POST",
-                    url: "<?php echo $pluginRoot ?>" + path + "/Api/Spotify-Request-handler.php",
+                    url: "<?php echo $pluginRoot ?>/Api/Spotify-Request-handler.php",
                     async: true,
                     timeout: 50000,
                     data: { searchtype: type, searchquery: query.replace(/ /g,"+") },
@@ -142,7 +142,7 @@ function search_spotify(type, query)
                 });
                 jQuery.ajax({
                     type: "POST",
-                    url: "<?php echo $pluginRoot ?>" + path + "/Api/Spotify-Request-handler.php",
+                    url: "<?php echo $pluginRoot ?>/Api/Spotify-Request-handler.php",
                     async: true,
                     timeout: 50000,
                     data: { searchtype: type, searchquery: query },
