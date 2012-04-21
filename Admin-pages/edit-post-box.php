@@ -93,43 +93,43 @@ function search_spotify(type, query)
 	jQuery("#spotify-result-container").html("Searching...");
 	jQuery("#spotify-preview-container").hide();
 	jQuery("#codeboxes").hide();
-            jQuery.ajax({
-                type: "POST",
-                url: "<?php echo $pluginRoot ?>/Api/Spotify-Request-handler.php",
-                async: true,
-                timeout: 50000,
-                data: { searchtype: type, searchquery: query },
-                success: function(data) {
-                	console.log("lyckades");
-                	var html = '<ul class="result-list">';
-                	if(type == "artist")
-                	{
-                		for(var i = 0; i < data.artists.length; ++i)
-                		{
-                			//html += '<li>'+ data.artists[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.artists[i].href+'\');" value="Skapa iframe"/></li>';
-                		}
-                	}
-                	if(type == "album")
-                	{
-                		for(var i = 0; i < data.albums.length; ++i)
-                		{
-                			//html += '<li>'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.albums[i].href+'\');" value="Skapa iframe"/></li>';
-                			html += '<li><a href="#" onClick="get_iframe_code(\''+data.albums[i].href+'\');return false;">'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +'</a></li>';
-                		}                	
-                	}
-                	if(type == "track")
-                	{
-                		for(var i = 0; i < data.tracks.length; ++i)
-                		{
-                			//html += '<li>'+ data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +' - <input type="button" onclick="get_iframe_code(\''+data.tracks[i].href+'\');" value="Skapa iframe"/></li>';
-                			html += '<li><a href="#" onclick="get_iframe_code(\''+data.tracks[i].href+'\'); return false;">' + data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +'</a></li>';
-                		}                	
-                	}
-                	html += '</ul>';
-                    jQuery("#spotify-result-container").html(html);
-                },
-                error: function(data) {
- 					  if(data.status == 404)
+                jQuery.ajax({
+                    type: "POST",
+                    url: "<?php echo $pluginRoot ?>" + path + "/Api/Spotify-Request-handler.php",
+                    async: true,
+                    timeout: 50000,
+                    data: { searchtype: type, searchquery: query.replace(/ /g,"+") },
+                    success: function(data) {
+                    	console.log("lyckades");
+                    	var html = '<ul class="result-list">';
+                    	if(type == "artist")
+                    	{
+                    		for(var i = 0; i < data.artists.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.artists[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.artists[i].href+'\');" value="Skapa iframe"/></li>';
+                    		}
+                    	}
+                    	if(type == "album")
+                    	{
+                    		for(var i = 0; i < data.albums.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.albums[i].href+'\');" value="Skapa iframe"/></li>';
+                    			html += '<li><a href="#" onClick="get_iframe_code(\''+data.albums[i].href+'\');">'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +'</a></li>';
+                    		}                	
+                    	}
+                    	if(type == "track")
+                    	{
+                    		for(var i = 0; i < data.tracks.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +' - <input type="button" onclick="get_iframe_code(\''+data.tracks[i].href+'\');" value="Skapa iframe"/></li>';
+                    			html += '<li><a href="#" onclick="get_iframe_code(\''+data.tracks[i].href+'\');">' + data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +'</a></li>';
+                    		}                	
+                    	}
+                    	html += '</ul>';
+                        jQuery("#spotify-result-container").html(html);
+                    },
+                    error: function(data) {
+					  if(data.status == 404)
 					  {
 						alert("Something went wrong with the url (seems to happend on Binero)");
 					  }
@@ -138,8 +138,55 @@ function search_spotify(type, query)
 						console.log("misslyckades");
 						alert("Something went wrong");
 					  }
-                }
-            });	 	
+                    }
+                });
+                jQuery.ajax({
+                    type: "POST",
+                    url: "<?php echo $pluginRoot ?>" + path + "/Api/Spotify-Request-handler.php",
+                    async: true,
+                    timeout: 50000,
+                    data: { searchtype: type, searchquery: query },
+                    success: function(data) {
+                    	console.log("lyckades");
+                    	var html = '<ul class="result-list">';
+                    	if(type == "artist")
+                    	{
+                    		for(var i = 0; i < data.artists.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.artists[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.artists[i].href+'\');" value="Skapa iframe"/></li>';
+                    		}
+                    	}
+                    	if(type == "album")
+                    	{
+                    		for(var i = 0; i < data.albums.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +' - <input type="button" onClick="get_iframe_code(\''+data.albums[i].href+'\');" value="Skapa iframe"/></li>';
+                    			html += '<li><a href="#" onClick="get_iframe_code(\''+data.albums[i].href+'\');">'+ data.albums[i].artists[0].name + ' - ' + data.albums[i].name +'</a></li>';
+                    		}                	
+                    	}
+                    	if(type == "track")
+                    	{
+                    		for(var i = 0; i < data.tracks.length; ++i)
+                    		{
+                    			//html += '<li>'+ data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +' - <input type="button" onclick="get_iframe_code(\''+data.tracks[i].href+'\');" value="Skapa iframe"/></li>';
+                    			html += '<li><a href="#" onclick="get_iframe_code(\''+data.tracks[i].href+'\');">' + data.tracks[i].artists[0].name + ' - ' + data.tracks[i].name +'</a></li>';
+                    		}                	
+                    	}
+                    	html += '</ul>';
+                        jQuery("#spotify-result-container").append(html);
+                    },
+                    error: function(data) {
+					  if(data.status == 404)
+					  {
+						alert("Something went wrong with the url (seems to happend on Binero)");
+					  }
+					  else
+					  {
+						console.log("misslyckades");
+						alert("Something went wrong");
+					  }
+                    }
+                });	 	 	
 }
 
 function get_iframe_code(href)
