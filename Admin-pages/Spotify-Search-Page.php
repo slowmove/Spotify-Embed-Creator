@@ -6,7 +6,7 @@ if (is_user_logged_in ()):
   wp_enqueue_script('SpotifyEmbedCreator');
 ?>
   <div class="wrap">
-    <div id="icon-options-general" class="icon32"><br/></div>
+    <div id="icon-upload" class="icon32"><br/></div>
     <h2>Spotify Embed Creator</h2>
   </div>
   <div id="spotify-container">

@@ -45,7 +45,10 @@ class SpotifyEmbedCreator
 	}
 
 }
-/* Shortcode setup */
+
+/**
+ * Shortcode setup
+ */
 function spotifyplaybutton_shortcode_func( $atts ) {
 	extract( shortcode_atts( array(
 		'play' => 'spotify:album:7JggdVIipgSShK1uk7N1hP',
@@ -80,7 +83,10 @@ add_shortcode( 'spotify', 'spotifyplaybutton_shortcode_func' );
 add_action( 'add_meta_boxes', 'myplugin_add_custom_box' );
 // backwards compatible (before WP 3.0)
 // add_action( 'admin_init', 'myplugin_add_custom_box', 1 );
-/* Adds a box to the main column on the Post and Page edit screens */
+
+/**
+ * Adds a box to the main column on the Post and Page edit screens
+ */
 function myplugin_add_custom_box() {
     add_meta_box( 
         'spotify_embed_creator_sectionid',
@@ -96,16 +102,17 @@ function myplugin_add_custom_box() {
     );
 }
 
-/* Prints the box content */
+/**
+ * Prints the box content
+ */
 function spotify_embed_creator_custom_box( $post ) {
-  // Use nonce for verification
   wp_nonce_field( plugin_basename( __FILE__ ), 'myplugin_noncename' );
-  // The actual fields for data entry
   include('Admin-pages/edit-post-box.php');
 }
 
-
-// hooks for install and update
+/**
+ * hooks for install and update
+ */
 register_activation_hook(__FILE__, 'SpotifyEmbedCreator::install');
 add_action('plugins_loaded', 'SpotifyEmbedCreator::update');
 
@@ -113,11 +120,9 @@ add_action('plugins_loaded', 'SpotifyEmbedCreator::update');
  * Add admin page
  */
 add_action('admin_menu', 'SpotifyEmbedCreator_add_page');
-
 function SpotifyEmbedCreator_add_page() {
-	add_menu_page('Create Spotify Play Button', 'Create Spotify Play Button', 'manage_options', __FILE__, 'SpotifyEmbedCreatorSearchPage');
+	add_menu_page('Create Spotify Play Button', 'Create Spotify Play Button', 'manage_options', __FILE__, 'SpotifyEmbedCreatorSearchPage', 'http://cf.scdn.co/i/favicon.ico');
 }
-
 function SpotifyEmbedCreatorSearchPage() {
 	include 'Admin-pages/Spotify-Search-Page.php';
 }
